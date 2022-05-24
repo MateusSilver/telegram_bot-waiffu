@@ -7,11 +7,11 @@ import requests
 import random
 from threading import Thread
 
-TOKEN = f'5350770633:AAGGphklXU2JAlDIH1xwLUYkxEpUHbJfc5w'
+TOKEN = #the token of telegram bot goes here, check botFather
 URL = f'https://api.telegram.org/bot{TOKEN}/'
 USERNAME_BOT = "supremeWaiffuBot"
-MAX_NUM_WAIFFUS = 5
-GROUP = "-734325597"
+MAX_NUM_WAIFFUS = 5#updates in the database
+GROUP = "-999999999"
 
 
 # usou o metodo get, a resposta é um json, ele traduz o conteudo do json com decode
@@ -44,10 +44,10 @@ def get_last_chat_id_and_text(updates):
 
 def send_message(text, chat_id, id):
     conn = psycopg2.connect(
-        dbname="deirq0spl6q5a0",
-        user="vvpmlnumabilbg",
-        password="2c884dee23b15f26806bb7a2d2dfd1cba584a0df52ce74e21b62dfec74ea4aed",
-        host="ec2-54-165-90-230.compute-1.amazonaws.com"
+        dbname="xxxxxxxxxxxxxx",
+        user="xxxxxxxxxxxxxx",
+        password="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        host="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     )
     if text == '/protecc':
         print('is correct')
@@ -83,7 +83,7 @@ def send_message(text, chat_id, id):
 
 def send_photo(chat_id, link):
     parameters= {
-        "chat_id": "-734325597",
+        "chat_id": "-999999999",
         "photo": link,
         "caption": "😍 Uma Waiffu apareceu! digite /protecc e o nome dessa waiffu para adicioná-la no seu harém"
     }
@@ -103,10 +103,10 @@ def get_waiffu():
     waiffu_ind = random.randint(1,MAX_NUM_WAIFFUS-1)
     print(waiffu_ind)
     conn = psycopg2.connect(
-        dbname="deirq0spl6q5a0",
-        user="vvpmlnumabilbg",
-        password="2c884dee23b15f26806bb7a2d2dfd1cba584a0df52ce74e21b62dfec74ea4aed",
-        host="ec2-54-165-90-230.compute-1.amazonaws.com"
+        dbname="xxxxxxxxxxxxxx",
+        user="xxxxxxxxxxxxxxx",
+        password="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        host="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     )
     """cursor = conn.cursor()
     cursor.execute('select waiffu_image_link  from waiffus where waiffuid = 1')
@@ -141,10 +141,10 @@ def get_waiffu():
 
 def user_waiffu(indice_atual):
     conn = psycopg2.connect(
-        dbname="deirq0spl6q5a0",
-        user="vvpmlnumabilbg",
-        password="2c884dee23b15f26806bb7a2d2dfd1cba584a0df52ce74e21b62dfec74ea4aed",
-        host="ec2-54-165-90-230.compute-1.amazonaws.com"
+        dbname="xxxxxxxxxxxxxx",
+        user="xxxxxxxxxxxxxx",
+        password="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        host="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     chat, text, user = get_last_chat_id_and_text(get_updates(URL))
@@ -158,10 +158,10 @@ def user_waiffu(indice_atual):
 
 def send_message_protecc(text_new, chat_new, indice_atual):
     conn = psycopg2.connect(
-        dbname="deirq0spl6q5a0",
-        user="vvpmlnumabilbg",
-        password="2c884dee23b15f26806bb7a2d2dfd1cba584a0df52ce74e21b62dfec74ea4aed",
-        host="ec2-54-165-90-230.compute-1.amazonaws.com"
+        dbname="xxxxxxxxxxxxxx",
+        user="xxxxxxxxxxxxx",
+        password="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        host="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(f'select * from waiffus where waiffuid={indice_atual};')
@@ -181,7 +181,7 @@ def send_message_protecc(text_new, chat_new, indice_atual):
         print('sucesso!')
         user_waiffu(indice_atual)
         message_sucess = f'UWU Vc protegeu {full_name}! de {show} e agora ela faz parte do seu Harém'
-        url = URL + 'sendMessage?text={}&chat_id={}'.format(message_sucess, "-734325597")
+        url = URL + 'sendMessage?text={}&chat_id={}'.format(message_sucess, "-999999999")
         get_url(url)
         return True
     else:
@@ -203,16 +203,16 @@ def wait_protection(url, text, chat, indice_atual):
 
         last_textchat = (text_new, chat_new)
         time.sleep(0.25)
-    url = URL + "sendMessage?text={}&chat_id={}".format(">´o`> Não! a Waiffu já se foi", "-734325597")
+    url = URL + "sendMessage?text={}&chat_id={}".format(">´o`> Não! a Waiffu já se foi", "-999999999")
     get_url(url)
 
 
 def show_harem(user):
     conn = psycopg2.connect(
-        dbname="deirq0spl6q5a0",
-        user="vvpmlnumabilbg",
-        password="2c884dee23b15f26806bb7a2d2dfd1cba584a0df52ce74e21b62dfec74ea4aed",
-        host="ec2-54-165-90-230.compute-1.amazonaws.com"
+        dbname="xxxxxxxxxxxxxx",
+        user="xxxxxxxxxxxxxx",
+        password="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        host="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(f'select waiffuID from harens where userName=\'{user}\';')
@@ -225,7 +225,7 @@ def show_harem(user):
     for waiffu in waiffus:
         lista_waiffus += lista_total_waiffus[int(waiffu)] + '\n'
 
-    url = URL + 'sendMessage?text={}&chat_id={}'.format(lista_waiffus, "-734325597")
+    url = URL + 'sendMessage?text={}&chat_id={}'.format(lista_waiffus, "-999999999")
     get_url(url)
 
 
